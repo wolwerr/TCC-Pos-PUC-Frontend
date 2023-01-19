@@ -47,7 +47,7 @@ export class FormTeacherComponent implements OnInit {
   action = 'fechar';
 
   createForm() {
-    let emailregex: RegExp =
+    let emailRegex: RegExp =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     let phoneregex: RegExp =
       /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
@@ -57,7 +57,7 @@ export class FormTeacherComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: [null, [Validators.required, Validators.pattern(nameregex)]],
       phone: [null, [Validators.required, Validators.pattern(phoneregex)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.pattern(emailRegex)]],
       salary: [null, [Validators.required, Validators.min(10.0)]],
       cep: [null, [Validators.required, Validators.pattern(cep)]],
       street: [null, Validators.required],
@@ -73,6 +73,10 @@ export class FormTeacherComponent implements OnInit {
     return this.formGroup.get('phone') as FormControl;
   }
 
+  get email() {
+    return this.formGroup.get('email') as FormControl;
+  }
+  
   get Cep() {
     return this.formGroup.get('cep') as FormControl;
   }
