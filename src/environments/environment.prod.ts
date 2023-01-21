@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  backend: 'http://localhost:8080',
+  backend: 'https://pequenosgenios.up.railway.app',
   cepHost: "https://viacep.com.br"
 };
