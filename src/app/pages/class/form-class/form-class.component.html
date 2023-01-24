@@ -30,7 +30,7 @@
 
     <ng-container matColumnDef="Telefone">
       <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.phone | mask: "(00) 00000-0000" }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="E-mail">

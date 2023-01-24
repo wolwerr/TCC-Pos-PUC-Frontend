@@ -62,6 +62,7 @@ export class FormClassComponent implements OnInit {
       this.classService.update(body).subscribe({
         next: (n) => {
           alert('Cadastro Atualizado!')
+          this.router.navigateByUrl('main/classes')
         },
         error: (e) => {
           alert('Ocorreu um erro: ' + e);

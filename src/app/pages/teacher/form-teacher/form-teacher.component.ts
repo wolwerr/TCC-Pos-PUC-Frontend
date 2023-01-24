@@ -76,7 +76,7 @@ export class FormTeacherComponent implements OnInit {
   get email() {
     return this.formGroup.get('email') as FormControl;
   }
-  
+
   get Cep() {
     return this.formGroup.get('cep') as FormControl;
   }
@@ -190,7 +190,7 @@ export class FormTeacherComponent implements OnInit {
     }
     setTimeout(() => {
       this.router.navigate(['/main/teachers'])
-    }, 4000);
+    });
   }
 
   private fillTeacherForm() {
@@ -210,7 +210,7 @@ export class FormTeacherComponent implements OnInit {
 
   delete() {
     if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!'))
-     {
+    {
       this.teacherService.delete(this.id).subscribe({
         next: (n) => {
           this.openSnackBar('Registro apagado com sucesso', 'fechar');

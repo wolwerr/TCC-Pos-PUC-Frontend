@@ -100,13 +100,11 @@ export class FormStudentComponent implements OnInit {
     // mimic http database access
     let db = ['tony@gmail.com'];
     return new Observable((observer) => {
-      setTimeout(() => {
         let result =
           db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
         observer.next(result);
         observer.complete();
-      }, 3000);
-    });
+      });
   }
 
   getErrorEmail() {
@@ -185,7 +183,7 @@ export class FormStudentComponent implements OnInit {
     }
     setTimeout(() => {
       this.router.navigateByUrl('/main/students')
-    }, 2000);
+    });
   }
 
   private fillStudentForm() {
