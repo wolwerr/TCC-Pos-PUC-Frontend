@@ -217,7 +217,7 @@ export class FormTeacherComponent implements OnInit {
           this.router.navigateByUrl('/main/teachers');
         },
         error: (e) => {
-          alert('erro aconteceu: ' + e)
+          alert('Professor não pode ser apagado pois está vinculado a uma classe!')
         }
       });
     } else {

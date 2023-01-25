@@ -210,7 +210,7 @@ export class FormStudentComponent implements OnInit {
           this.router.navigateByUrl('/main/students');
         },
         error: (e) => {
-          alert('erro aconteceu: ' + e)
+          alert('Aluno não pode ser apagado pois está vinculado a uma classe!')
         }
       });
     } else {

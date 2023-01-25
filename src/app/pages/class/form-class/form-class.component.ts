@@ -112,7 +112,7 @@ export class FormClassComponent implements OnInit {
       this.classService.delete(this.id!).subscribe({
         next: (n) => {
           alert('Classe excluída com sucesso!');
-          this.router.navigateByUrl('/main')
+          this.router.navigateByUrl('/main/classes')
         }
       })
     }
