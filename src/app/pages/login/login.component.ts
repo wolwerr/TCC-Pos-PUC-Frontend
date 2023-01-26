@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
 import {throwError} from "rxjs";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
             this.authService.setRefreshToken(res.refreshToken);
             // this.appService.showMessage('Sucesso!', 'fechar');
             this.authService.navigateToHome();
+            this.router.navigateByUrl('/home')
           },
           error: (err) => {
             console.log(err)

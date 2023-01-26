@@ -17,22 +17,38 @@ import {TableClassComponent} from "./pages/class/table-class/table-class.compone
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', data: {title: 'First Component'}, pathMatch: 'full'},
+  {path: '', redirectTo: 'home', data: {title: 'First Component'}, pathMatch: 'full'},
   {
-    path: 'login', component: LoginLayoutComponent, data: {title: 'First Component'},
+    path: 'home', component: HomeLayoutComponent, data: {title: 'First Component'},
     children: [
-      {path: '', component: LoginComponent}
+      {path: '', component: HomeComponent}
     ]
   },
   {
-    path: 'main', component: HomeLayoutComponent, canActivate: [AuthGuard], canLoad: [AuthGuard],
+    path: 'main', component: HomeLayoutComponent,
     children: [
+    {
+      path: 'contact',
+      component: ContactComponent,
+    },
+    {path: '**', redirectTo: 'home'},
+    {
+      path: '',
+      component: HomeComponent,
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
+      },
+  ],
+  },{
+    path: 'main', component: HomeLayoutComponent ,
+    children: [
+                  {
+        path: 'login',
+        component: LoginLayoutComponent,
+      },
       {
-        path: '',
-        component: HomeComponent,
-        canActivate: [AuthGuard],
-        canLoad: [AuthGuard]
-      }, {
         path: 'cadastrostudent',
         component: FormStudentComponent,
         canActivate: [AuthGuard]
@@ -77,12 +93,6 @@ const routes: Routes = [
         component: TableClassComponent,
         canActivate: [AuthGuard]
       },
-      {
-        path: 'contact',
-        component: ContactComponent,
-        canActivate: [AuthGuard]
-      },
-      {path: '**', redirectTo: ''}
     ]
   },
 ];

@@ -7,8 +7,14 @@
   <h1 class="display-1">Pense... O melhor para seu filho não pode esperar!</h1>
 
   <span class="fill-remaining-space"></span>
-  <div>
-    <button mat-button (click)="onLogout()">Sair</button>
+
+  <div *ngIf="!isLoggedIn$">
+    <button mat-button  (click)="login()">Login</button>
+
+  </div>
+
+  <div *ngIf="isLoggedIn$">
+    <button mat-button  (click)="onLogout()">Logout</button>
   </div>
 
 </mat-toolbar>
@@ -17,12 +23,12 @@
   <mat-sidenav #sidenav>
     <mat-nav-list (click)="sidenav.toggle()">
       <a mat-list-item [routerLink]="'/main'"> Home </a>
-      <a mat-list-item [routerLink]="'/main/cadastrostudent'"> Cadastrar Alunos </a>
-      <a mat-list-item [routerLink]="'/main/cadastroteacher'"> Cadastrar Professores </a>
-      <a mat-list-item [routerLink]="'/main/cadastroclass'"> Cadastrar Turma</a>
-      <a mat-list-item [routerLink]="'/main/students'"> Alunos Cadastrados </a>
-      <a mat-list-item [routerLink]="'/main/teachers'"> Professores Cadastrados </a>
-      <a mat-list-item [routerLink]="'/main/classes'"> Classes Cadastradas </a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/cadastrostudent'"> Cadastrar Alunos </a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/cadastroteacher'"> Cadastrar Professores </a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/cadastroclass'"> Cadastrar Turma</a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/students'"> Alunos Cadastrados </a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/teachers'"> Professores Cadastrados </a>
+      <a *ngIf="isLoggedIn$" mat-list-item [routerLink]="'/main/classes'"> Classes Cadastradas </a>
       <a mat-list-item [routerLink]="'/main/contact'"> Contate-nos </a>
       <a mat-list-item>Fechar</a>
     </mat-nav-list>
