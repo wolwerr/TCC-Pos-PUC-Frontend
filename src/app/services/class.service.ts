@@ -24,6 +24,7 @@ export class ClassService {
   }
 
   findAll(): Observable<Page<IClass>> {
+    
     return this.http.get<Page<IClass>>(`${environment.backend}/class`)
   }
 }

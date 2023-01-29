@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {PageEvent} from "@angular/material/paginator";
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-table-class',
@@ -27,16 +28,17 @@ export class TableClassComponent implements OnInit {
 
   classDisplayedColumns: string[] = ['grade','teacher', 'total'];
   studentDisplayedColumns: string[] = ['name', 'phone', 'email'];
+  studentDisplayedColumns2: string[] = ['name'];
   columnsToDisplayWithExpand = [...this.classDisplayedColumns, 'expand'];
 
   expandedElement: any;
   isLoadingRow: boolean = false;
   private classService: ClassService;
+  isLoggedIn$: boolean;
 
-
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private authService: AuthenticationService) {
     this.classService = new ClassService(this.http);
-
+    this.isLoggedIn$ = this.authService.isTokenPresent()
     this.classService.findAll().subscribe({
       next: (n) => {
         this.classDataSource.data = n.content

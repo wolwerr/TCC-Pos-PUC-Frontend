@@ -17,8 +17,9 @@ export class HeaderComponent {
 
   onLogout() {
     this.authService.logout();
-        location.reload();
+
         this.router.navigateByUrl('/home')
+        location.reload();
   }
 
   login() {

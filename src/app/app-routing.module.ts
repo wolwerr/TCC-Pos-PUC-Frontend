@@ -91,7 +91,7 @@ const routes: Routes = [
       {
         path: 'classes',
         component: TableClassComponent,
-        canActivate: [AuthGuard]
+        
       },
     ]
   },
