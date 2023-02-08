@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
-import {throwError} from "rxjs";
+import {throwError, timeout} from "rxjs";
 import { Router } from '@angular/router';
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private appService: AppService,
   ) {}
 
   ngOnInit() {
@@ -43,24 +45,14 @@ export class LoginComponent implements OnInit {
           next: (res) => {
             this.authService.setAccessToken(res.accessToken)
             this.authService.setRefreshToken(res.refreshToken);
-            // this.appService.showMessage('Sucesso!', 'fechar');
+            this.appService.showMessage('Sucesso!', 'fechar');
             this.authService.navigateToHome();
             this.router.navigateByUrl('/home')
           },
-          error: (err) => {
-            console.log(err)
-            alert('Usuário ou Senha invalido!')
-            // this.appService.showMessage('Usuário ou Senha invalido!', 'fechar');
-            return throwError(() => 'usuário ou senha inválidos');
-          },
-          complete: () => {
-            console.log('complete')
-          }
         });
-    } else {
-        alert('Digite seu usuário e senha!')
-      // this.appService.showMessage('Digite seu usuário e senha!', 'fechar');
+    }
+      this.appService.showMessage('Usuário ou senha errados, digite novamente!', 'fechar');
     }
 
   }
-}
+

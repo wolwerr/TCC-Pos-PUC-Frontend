@@ -1,19 +1,21 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {AuthGuard} from './interceptor/auth.guard';
+import { AuthGuard } from './interceptor/auth.guard';
 
-import {FormStudentComponent} from './pages/student/form-student/form-student.component';
-import {FormTeacherComponent} from './pages/teacher/form-teacher/form-teacher.component';
-import {HomeComponent} from './pages/home/home.component';
-import {LoginComponent} from './pages/login/login.component';
+import { FormStudentComponent} from './pages/student/form-student/form-student.component';
+import { FormTeacherComponent} from './pages/teacher/form-teacher/form-teacher.component';
+import { HomeComponent} from './pages/home/home.component';
+import { LoginComponent} from './pages/login/login.component';
 import {TableStudentComponent} from './pages/student/table-student/table-student.component';
-import {LoginLayoutComponent} from "./pages/login-layout/login-layout.component";
-import {HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
+import { LoginLayoutComponent} from "./pages/login-layout/login-layout.component";
+import { HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import { TableTeacherComponent } from './pages/teacher/table-teacher/table-teacher.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import {FormClassComponent} from "./pages/class/form-class/form-class.component";
-import {TableClassComponent} from "./pages/class/table-class/table-class.component";
+import { FormClassComponent } from "./pages/class/form-class/form-class.component";
+import { TableClassComponent } from "./pages/class/table-class/table-class.component";
+import { TableUserComponent } from './pages/users/table-user/table-user.component';
+import { FormUserComponent } from './pages/users/form-user/form-user.component';
 
 
 const routes: Routes = [
@@ -91,7 +93,21 @@ const routes: Routes = [
       {
         path: 'classes',
         component: TableClassComponent,
-        
+      },
+      {
+        path: 'users',
+        component: TableUserComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+      path: 'cadastrouser',
+      component: FormUserComponent,
+      canActivate: [AuthGuard]
+      },
+      {
+        path: 'cadastrouser/:id',
+        component: FormUserComponent,
+        canActivate: [AuthGuard]
       },
     ]
   },

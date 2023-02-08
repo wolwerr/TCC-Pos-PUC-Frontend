@@ -30,6 +30,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormClassComponent } from './pages/class/form-class/form-class.component';
 import {SearchBarComponent} from "./shared/search-bar/search-bar.component";
 import { TableClassComponent } from './pages/class/table-class/table-class.component';
+import { FormUserComponent } from './pages/users/form-user/form-user.component';
+import { TableUserComponent } from './pages/users/table-user/table-user.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { TableClassComponent } from './pages/class/table-class/table-class.compo
         ContactComponent,
         FormClassComponent,
         SearchBarComponent,
-        TableClassComponent
+        TableClassComponent,
+        FormUserComponent,
+        TableUserComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,31 @@
+<div class="example-container mat-elevation-z8">
+  <h1 class="title">LISTA DE USUÁRIOS</h1>
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="E-mail">
+      <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Cargo">
+      <mat-header-cell *matHeaderCellDef> Cargo </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="'/main/cadastrouser/'+ row.id"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="8" [pageSizeOptions]="[5, 8, 20]">
+  </mat-paginator>
+</div>

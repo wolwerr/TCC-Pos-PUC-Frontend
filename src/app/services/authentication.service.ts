@@ -64,4 +64,8 @@ export class AuthenticationService {
   navigateToHome() {
     this.router.navigate(['/main/home']).then()
   }
+
+  forgot(email: string): Observable<string> {
+    return this.http.post<string>(environment.backend + '/auth/forgot', email);
+  }
 }
