@@ -34,7 +34,7 @@ export class UserService {
   }
 
   public findUserByUsername(username:string): Observable<IUser> {
-    return this.http.get<IUser>(`${this.api_url}/user/${username}`);
+    return this.http.get<IUser>(`${this.api_url}/user/userName/${username}`);
   }
 
   public delete(id: number): Observable<void> {

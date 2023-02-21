@@ -1,0 +1,17 @@
+<div class="signin-content">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <img src="../../../assets/img/logo-pg.svg" alt="Logo Pequeno Gênios">
+        <h1>Esqueceu sua senha?</h1>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Usuário" formControlName="userName" required>
+          <mat-error *ngIf="isFieldInvalid('userName')">
+            Informe seu nome de usuário
+          </mat-error>
+        </mat-form-field>
+        <button class="login-btn" mat-raised-button color="primary" type="submit">Enviar os dados para o e-mail cadastrado</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

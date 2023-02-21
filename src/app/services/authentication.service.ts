@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {LoginResponse} from 'src/app/models/login.response.model';
 import {Router} from "@angular/router";
+import { IUser } from '../models/user';
 
 const ACCESS_TOKEN: string = 'access_token';
 const REFRESH_TOKEN: string = 'refresh_token';
@@ -19,6 +20,8 @@ export class AuthenticationService {
     this.accessToken = this.getToken() ?? '';
     this.refreshToken = this.getRefreshToken() ?? '';
   }
+
+  api_url = environment.backend;
 
   isTokenPresent(): boolean {
     return !!localStorage.getItem(ACCESS_TOKEN); // !! converts to boolean
@@ -63,9 +66,5 @@ export class AuthenticationService {
 
   navigateToHome() {
     this.router.navigate(['/main/home']).then()
-  }
-
-  forgot(email: string): Observable<string> {
-    return this.http.post<string>(environment.backend + '/auth/forgot', email);
   }
 }

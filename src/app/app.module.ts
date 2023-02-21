@@ -32,6 +32,7 @@ import {SearchBarComponent} from "./shared/search-bar/search-bar.component";
 import { TableClassComponent } from './pages/class/table-class/table-class.component';
 import { FormUserComponent } from './pages/users/form-user/form-user.component';
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
+import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { TableUserComponent } from './pages/users/table-user/table-user.componen
         TableClassComponent,
         FormUserComponent,
         TableUserComponent,
+        EsqueciSenhaComponent,
     ],
     imports: [
         BrowserModule,

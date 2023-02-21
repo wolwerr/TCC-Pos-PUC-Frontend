@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
-import {throwError, timeout} from "rxjs";
 import { Router } from '@angular/router';
 import {AppService} from "../../app.service";
 
@@ -52,6 +51,10 @@ export class LoginComponent implements OnInit {
         });
     }
       this.appService.showMessage('Usuário ou senha errados, digite novamente!', 'fechar');
+    }
+
+    esqueciSenha() {
+      this.router.navigateByUrl('main/esqueciSenha')
     }
 
   }

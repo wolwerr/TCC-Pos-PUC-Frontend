@@ -156,7 +156,7 @@ export class FormUserComponent implements OnInit {
       this.userService.delete(this.id).subscribe({
         next: (n) => {
           this.openSnackBar('Registro apagado com sucesso', 'fechar');
-          this.router.navigateByUrl('/main/students');
+          this.router.navigateByUrl('/main/users');
         },
         error: (e) => {
           alert('Aluno não pode ser apagado pois está vinculado a uma classe!')

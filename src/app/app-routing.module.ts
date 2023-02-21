@@ -16,6 +16,7 @@ import { FormClassComponent } from "./pages/class/form-class/form-class.componen
 import { TableClassComponent } from "./pages/class/table-class/table-class.component";
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
 import { FormUserComponent } from './pages/users/form-user/form-user.component';
+import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'esqueciSenha',
+        component: EsqueciSenhaComponent,
       },
   ],
   },{
