@@ -117,4 +117,8 @@ export class FormClassComponent implements OnInit {
       })
     }
   }
+
+  voltar() {
+    this.router.navigateByUrl('/main/classes');
+  }
 }

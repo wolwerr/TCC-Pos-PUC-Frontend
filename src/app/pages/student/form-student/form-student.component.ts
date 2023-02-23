@@ -217,4 +217,9 @@ export class FormStudentComponent implements OnInit {
       alert('cancelado!')
     }
   }
+
+  voltar() {
+    this.router.navigateByUrl('/main/students');
+  }
+
 }

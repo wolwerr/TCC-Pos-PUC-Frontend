@@ -112,6 +112,7 @@
       <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveStudent()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
       <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="delete()">Apagar</button>
+      <button mat-raised-button color="accent" class="button" (click)="voltar()">Voltar</button>
     </div>
   </form>
 </div>

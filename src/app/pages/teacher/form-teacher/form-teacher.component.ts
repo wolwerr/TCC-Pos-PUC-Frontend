@@ -224,4 +224,9 @@ export class FormTeacherComponent implements OnInit {
       alert('cancelado!')
     }
   }
+
+  voltar() {
+    this.router.navigateByUrl('/main/teachers');
+  }
+
 }

@@ -17,6 +17,7 @@ import { TableClassComponent } from "./pages/class/table-class/table-class.compo
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
 import { FormUserComponent } from './pages/users/form-user/form-user.component';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
+import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
 
 
 const routes: Routes = [
@@ -47,11 +48,15 @@ const routes: Routes = [
         path: 'esqueciSenha',
         component: EsqueciSenhaComponent,
       },
+      {
+        path: 'trocarSenha/:id',
+        component: TrocarSenhaComponent,
+      },
   ],
   },{
     path: 'main', component: HomeLayoutComponent ,
     children: [
-                  {
+      {
         path: 'login',
         component: LoginLayoutComponent,
       },

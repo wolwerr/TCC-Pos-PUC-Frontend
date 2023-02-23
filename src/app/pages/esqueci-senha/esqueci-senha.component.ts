@@ -49,5 +49,9 @@ export class EsqueciSenhaComponent implements OnInit {
       this.appService.showMessage('Usuário não encontrado!', 'fechar');
     }
 
+    voltar() {
+      this.router.navigateByUrl('/main/login');
+    }
+
   }
 

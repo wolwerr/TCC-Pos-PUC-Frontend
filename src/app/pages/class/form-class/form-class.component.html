@@ -47,6 +47,7 @@
 
   <button  color="primary" mat-raised-button (click)="submit()">{{isEdit ? 'Atualizar': 'Cadastrar'}}</button>
   <button *ngIf="isEdit" mat-raised-button color="warn" (click)="delete()">Apagar</button>
+  <button mat-raised-button color="accent" class="button" (click)="voltar()">Voltar</button>
 
 </form>
 </div>

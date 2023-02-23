@@ -33,6 +33,7 @@ import { TableClassComponent } from './pages/class/table-class/table-class.compo
 import { FormUserComponent } from './pages/users/form-user/form-user.component';
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
+import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.compo
         FormUserComponent,
         TableUserComponent,
         EsqueciSenhaComponent,
+        TrocarSenhaComponent,
     ],
     imports: [
         BrowserModule,

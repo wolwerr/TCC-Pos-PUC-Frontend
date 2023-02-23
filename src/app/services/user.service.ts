@@ -41,4 +41,10 @@ export class UserService {
     return this.http.delete<void>(`${this.api_url}/user/${id}`);
   }
 
+  public async updateSenha(id:number, user: IUser) {
+    await lastValueFrom(
+      this.http.put<IUser>(`${this.api_url}/user/trocarSenha/${id}`, user)
+    );
+  }
+
 }
