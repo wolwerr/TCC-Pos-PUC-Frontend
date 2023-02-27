@@ -49,21 +49,15 @@ export class TrocarSenhaComponent implements OnInit {
   }
 
   public async onSubmit() {
-    try {
-      if(this.isEdit) {
+    if(this.formGroup.valid){
         await this.userService.updateSenha(this.id, this.user);
         this.openSnackBar(this.success, this.action);
-      }
-    } catch (e: any) {
-      console.log('error');
-      console.log(this.user);
-      this.openSnackBar('Já existe um usuário cadastrado com esse username', this.action);
-      return;
-    }
     setTimeout(() => {
       this.router.navigateByUrl('/main/login');
     });
-  }
+  }else{
+    this._snackBar.open('Preencha a senha', 'fechar');
+  }}
 
     voltar() {
       this.router.navigateByUrl('/main/login');

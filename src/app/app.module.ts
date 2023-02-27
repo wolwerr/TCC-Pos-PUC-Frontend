@@ -25,7 +25,7 @@ import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import {LoaderInterceptor} from "./interceptor/loader.interceptor";
 import { TableTeacherComponent } from './pages/teacher/table-teacher/table-teacher.component';
 import { CarouselComponent } from './pages/home/carousel/carousel.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { ContactComponent } from './pages/contact/form-contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormClassComponent } from './pages/class/form-class/form-class.component';
 import {SearchBarComponent} from "./shared/search-bar/search-bar.component";
@@ -34,6 +34,7 @@ import { FormUserComponent } from './pages/users/form-user/form-user.component';
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
+import { TableContactComponent } from './pages/contact/table-contact/table-contact.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.componen
         TableUserComponent,
         EsqueciSenhaComponent,
         TrocarSenhaComponent,
+        TableContactComponent,
     ],
     imports: [
         BrowserModule,

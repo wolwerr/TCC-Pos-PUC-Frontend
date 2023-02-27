@@ -21,7 +21,7 @@
           <mat-form-field class="form-element">
             <input matInput placeholder="Username" formControlName="username"[(ngModel)]="user.username">
             <mat-error *ngIf="!formGroup.controls['username'].valid && formGroup.controls['username'].touched">
-              <!-- {{ getErrorUsername() }} -->
+              {{ getErrorUserName() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -53,6 +53,7 @@
           <mat-form-field class="form-element">
             <input matInput placeholder="Cargo" formControlName="role" [(ngModel)]="user.role">
             <mat-error *ngIf="!role.valid && role.touched">
+              {{ getErrorCargo() }}
             </mat-error>
           </mat-form-field>
         </td>
@@ -61,7 +62,7 @@
     <div>
       <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveUser()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
-      <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="delete()">Apagar</button>
+      <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="deleteUser()">Apagar</button>
     </div>
   </form>
 </div>

@@ -1,0 +1,63 @@
+<section class="border p-4 d-flex justify-content-center mb-4">
+  <form [formGroup]="formGroup" class="form" style="width: 100%; max-width: 300px">
+    <h2 class>Contate-nos</h2>
+    <!-- Name input -->
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Nome" formControlName="name" [(ngModel)]="contact.name">
+            <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+              {{ getErrorName() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <!-- Email input -->
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Email" formControlName="email" [(ngModel)]="contact.email">
+            <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+              {{ getErrorEmail() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <!-- Subject input -->
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Titulo" formControlName="subject" [(ngModel)]="contact.subject">
+            <mat-error *ngIf="!formGroup.controls['subject'].valid && formGroup.controls['subject'].touched">
+              {{ getErrorSubject() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <!-- Message input -->
+    <table class="form-element" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="form-element">
+            <input matInput placeholder="Mensagem" formControlName="message" [(ngModel)]="contact.message">
+            <textarea matInput></textarea>
+            <mat-error *ngIf="!formGroup.controls['message'].valid && formGroup.controls['message'].touched">
+              {{ getErrorMessage() }}
+            </mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveContact()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
+      </button>
+      <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="deleteContact()">Apagar</button>
+    </div>
+  </form>
+</section>

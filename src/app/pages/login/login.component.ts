@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from "../../services/authentication.service";
 import { Router } from '@angular/router';
-import {AppService} from "../../app.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +17,19 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthenticationService,
     private router: Router,
-    private appService: AppService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000
     });
   }
 
@@ -44,15 +50,14 @@ export class LoginComponent implements OnInit {
           next: (res) => {
             this.authService.setAccessToken(res.accessToken)
             this.authService.setRefreshToken(res.refreshToken);
-            this.appService.showMessage('Sucesso!', 'fechar');
-            this.authService.navigateToHome();
+            this.authService.navigateToHome();            
+            this.openSnackBar('Login feito com Sucesso!', 'Fechar');
             this.router.navigateByUrl('/home')
           },
         });
     }
-      this.appService.showMessage('Usuário ou senha errados, digite novamente!', 'fechar');
+    this.openSnackBar('Usuário ou senha errados, digite novamente!', 'Fechar');
     }
-
     esqueciSenha() {
       this.router.navigateByUrl('main/esqueciSenha')
     }

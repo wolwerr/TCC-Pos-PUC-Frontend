@@ -4,7 +4,6 @@ import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {LoginResponse} from 'src/app/models/login.response.model';
 import {Router} from "@angular/router";
-import { IUser } from '../models/user';
 
 const ACCESS_TOKEN: string = 'access_token';
 const REFRESH_TOKEN: string = 'refresh_token';

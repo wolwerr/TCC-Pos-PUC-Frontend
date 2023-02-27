@@ -18,10 +18,13 @@ export class FormUserComponent implements OnInit {
   isEdit: boolean = false;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,
+  constructor(private formBuilder: FormBuilder,
+    private http: HttpClient,
     private userService: UserService,
-    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute,
-    private router: Router) {}
+    private _snackBar: MatSnackBar,
+    private activeRouter: ActivatedRoute,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -38,12 +41,11 @@ export class FormUserComponent implements OnInit {
   createForm() {
     let emailRegex: RegExp =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let nameRegex: RegExp = /^([a-zA-Zà-úÀ-Ú]|-|_|\s)+$/;
     this.formGroup = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.pattern(nameRegex)]],
-      username: [null, [Validators.required]],
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      username: [null, [Validators.required, Validators.minLength(3)]],
       email: [null, [Validators.required, Validators.pattern(emailRegex)]],
-      password: [null, [Validators.required, Validators.min(10.0)]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
       role: [null, Validators.required],
     });
   }
@@ -68,46 +70,48 @@ export class FormUserComponent implements OnInit {
     return this.formGroup.get('role') as FormControl;
   }
 
-  checkInUseEmail(control: { value: string }) {
-    // mimic http database access
-    let db = ['tony@gmail.com'];
-    return new Observable((observer) => {
-        let result =
-          db.indexOf(control.value) !== -1 ? { alreadyInUse: true } : null;
-        observer.next(result);
-        observer.complete();
-      });
-  }
 
   getErrorEmail() {
     return this.formGroup.get('email')?.hasError('required')
       ? 'Este campo é obrigatório'
       : this.formGroup.get('email')?.hasError('pattern')
       ? 'Não é um endereço de e-mail válido'
-      : this.formGroup.get('email')?.hasError('alreadyInUse')
-      ? 'Este endereço de e-mail já está em uso'
       : '';
   }
 
   getErrorName() {
     return this.formGroup.get('name')?.hasError('required')
-      ? 'Este campo é obrigatório'
-      : this.formGroup.get('name')?.hasError('pattern')
-      ? 'Não é um nome válido'
+    ? 'Este campo é obrigatório'
+    : this.formGroup.get('name')?.hasError('minlength')
+      ? 'O nome precisa ter no mínimo 3 caracteres'
+    : '';
+  }
+
+  getErrorUserName() {
+    return this.formGroup.get('username')?.hasError('required')
+    ? 'Este campo é obrigatório'
+    : this.formGroup.get('username')?.hasError('minlength')
+      ? 'O nome precisa ter no mínimo 3 caracteres'
       : '';
   }
 
   getErrorSenha() {
     return this.formGroup.get('password')?.hasError('required')
+    ? 'Este campo é obrigatório'
+    : this.formGroup.get('password')?.hasError('minlength')
+      ? 'A senha precisa ter no mínimo 6 caracteres'
+      : '';
+  }
+
+  getErrorCargo() {
+    return this.formGroup.get('role')?.hasError('required')
       ? 'Este campo é obrigatório'
-      : this.formGroup.get('password')?.hasError('pattern')
-      ? 'Senha inválida, favor trocar'
       : '';
   }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 3000
+      duration: 1000
     });
   }
 
@@ -149,10 +153,10 @@ export class FormUserComponent implements OnInit {
     }
   }
 
-  delete() {
+  deleteUser() {
     if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!'))
     {
-      this.userService.delete(this.id).subscribe({
+      this.userService.deleteUser(this.id).subscribe({
         next: (n) => {
           this.openSnackBar('Registro apagado com sucesso', 'fechar');
           this.router.navigateByUrl('/main/users');

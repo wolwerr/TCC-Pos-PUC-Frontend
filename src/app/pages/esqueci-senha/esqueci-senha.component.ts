@@ -2,7 +2,7 @@ import { UserService } from './../../services/user.service';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {AppService} from "../../app.service";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-esqueci-senha',
@@ -18,12 +18,18 @@ export class EsqueciSenhaComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private appService: AppService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
       userName: ['', Validators.required]
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000
     });
   }
 
@@ -41,12 +47,12 @@ export class EsqueciSenhaComponent implements OnInit {
       this.userService.findUserByUsername(username)
         .subscribe({
           next: () => {
-            this.appService.showMessage('Sucesso!', 'fechar');
+            this.openSnackBar('Sucesso!', 'Fechar');
             this.router.navigateByUrl('main/login');
           },
         });
     }
-      this.appService.showMessage('Usuário não encontrado!', 'fechar');
+    this.openSnackBar('Usuário não encontrado!', 'Fechar');
     }
 
     voltar() {

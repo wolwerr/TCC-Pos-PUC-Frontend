@@ -11,13 +11,15 @@ import {TableStudentComponent} from './pages/student/table-student/table-student
 import { LoginLayoutComponent} from "./pages/login-layout/login-layout.component";
 import { HomeLayoutComponent} from "./pages/home-layout/home-layout.component";
 import { TableTeacherComponent } from './pages/teacher/table-teacher/table-teacher.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { ContactComponent } from './pages/contact/form-contact/contact.component';
 import { FormClassComponent } from "./pages/class/form-class/form-class.component";
 import { TableClassComponent } from "./pages/class/table-class/table-class.component";
 import { TableUserComponent } from './pages/users/table-user/table-user.component';
 import { FormUserComponent } from './pages/users/form-user/form-user.component';
 import { EsqueciSenhaComponent } from './pages/esqueci-senha/esqueci-senha.component';
 import { TrocarSenhaComponent } from './pages/trocar-senha/trocar-senha.component';
+import { TableContactComponent } from './pages/contact/table-contact/table-contact.component';
+// import { FormContactComponent } from './pages/contact/form-contact/contact.component';
 
 
 const routes: Routes = [
@@ -118,6 +120,16 @@ const routes: Routes = [
         path: 'cadastrouser/:id',
         component: FormUserComponent,
         canActivate: [AuthGuard]
+      },
+      {
+          path: 'cadastrocontact/:id',
+          component: ContactComponent,
+          canActivate: [AuthGuard]
+      },
+      {
+          path: 'contacts',
+          component: TableContactComponent,
+          canActivate: [AuthGuard]
       },
     ]
   },
