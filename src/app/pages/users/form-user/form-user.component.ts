@@ -161,13 +161,16 @@ export class FormUserComponent implements OnInit {
           this.openSnackBar('Registro apagado com sucesso', 'fechar');
           this.router.navigateByUrl('/main/users');
         },
-        error: (e) => {
-          alert('Aluno não pode ser apagado pois está vinculado a uma classe!')
-        }
+        
       });
     } else {
       alert('cancelado!')
     }
   }
+
+  voltar() {
+    this.router.navigateByUrl('/main/users');
+  }
+
 }
 

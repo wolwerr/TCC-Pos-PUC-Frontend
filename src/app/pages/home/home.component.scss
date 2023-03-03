@@ -94,3 +94,30 @@ mat-card-title {
 .cards {
   display: flex;
 }
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+  }
+
+  .container__caixa {
+    margin: 2em 2em;
+  }
+
+  .secundario {
+    margin: 0;
+    text-align: center;
+  }
+
+  .container__caixa__titulo {
+    font-size: 1.5em;
+  }
+
+  .cards {
+    display: block;
+
+  }
+
+}

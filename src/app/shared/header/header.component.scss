@@ -1,5 +1,5 @@
 .angular-logo {
-  margin: 0 4px 3px 0;
+
   height: 35px;
   vertical-align: middle;
 }
@@ -21,4 +21,23 @@ h1{
   margin-left: 500px;
   position: absolute;
   font-size: 1,5rem;
+}
+
+h2{
+  text-align: center;
+  margin-left: 500px;
+  position: absolute;
+  font-size: 1,5rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .display-1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 372px) {
+.display {
+  display: none;
+}
 }

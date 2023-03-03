@@ -115,13 +115,14 @@ export class ContactComponent implements OnInit {
         this.openSnackBar(this.success, this.action);
       } else {
         await this.contactService.postContact(this.contact);
+        alert('Mensagem enviada com sucesso!');
         this.formGroup.reset();
         this.openSnackBar(this.success, this.action);
       }
     } catch (e: any) {
       console.log('error');
       console.log(this.contact);
-      
+
       return;
     }
     setTimeout(() => {
@@ -132,7 +133,7 @@ export class ContactComponent implements OnInit {
 private fillContactForm() {
   if (this.activeRouter.snapshot.paramMap.get('id')) {
     this.isEdit = true;
-    this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);    
+    this.id = Number.parseInt(this.activeRouter.snapshot.paramMap.get('id')!);
     this.contactService.findContactsById(this.id).subscribe({
       next: (res) => {
         this.formGroup.patchValue(res);
@@ -145,11 +146,11 @@ private fillContactForm() {
 }
 
   deleteContact() {
-    if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!')) 
+    if (confirm('Você está prestes a apagar esse registro, esta ação não pode ser desfeita!'))
     {
     this.contactService.deleteContact(this.id).subscribe({
       next: () => {
-    this.openSnackBar('Contato excluído com sucesso!', 'Fechar');    
+    this.openSnackBar('Contato excluído com sucesso!', 'Fechar');
     setTimeout(() => {
       this.router.navigateByUrl('/main/contacts')
       }, 1000);
