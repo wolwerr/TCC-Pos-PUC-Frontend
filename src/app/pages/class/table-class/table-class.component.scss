@@ -74,3 +74,12 @@ tr.example-element-row:not(.example-expanded-row):active {
 .mat-header-cell {
   text-align: center;
 }
+
+.button {
+  position: relative;
+  width: 30%;
+  margin-top: 15px;
+  margin-left: 5px;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

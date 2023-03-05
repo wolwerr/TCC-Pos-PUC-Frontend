@@ -40,9 +40,8 @@ export class ContactComponent implements OnInit {
   this.formGroup = this.formBuilder.group({
     name: [null, [Validators.required, Validators.minLength(3)]],
     email: [null, [Validators.required, Validators.pattern(emailRegex)]],
-    subject: [null, [Validators.required]],
-    message: [null, [Validators.required]],
-    // copy: [null, [Validators.required]],
+    subject: [null, Validators.required],
+    message: [null, Validators.required],
   });
 }
 
@@ -62,9 +61,6 @@ export class ContactComponent implements OnInit {
     return this.formGroup.get('message') as FormControl;
   }
 
-  // get copy() {
-  //   return this.formGroup.get('copy')as FormControl;
-  // }
 
 
   getErrorName() {
@@ -95,11 +91,6 @@ export class ContactComponent implements OnInit {
       : '';
   }
 
-  // getErrorCopy() {
-  //   return this.formGroup.get('copy')?.hasError('required')
-  //     ? 'Este campo é obrigatório'
-  //     : '';
-  // }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -122,8 +113,6 @@ export class ContactComponent implements OnInit {
     } catch (e: any) {
       console.log('error');
       console.log(this.contact);
-
-      return;
     }
     setTimeout(() => {
       this.router.navigateByUrl('/main/contacts')
@@ -157,6 +146,10 @@ private fillContactForm() {
   }}
 
     )}
+  }
+
+  voltar() {
+    this.router.navigateByUrl('/main/contacts');
   }
 }
 

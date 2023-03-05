@@ -1,5 +1,5 @@
-<section class="border p-4 d-flex justify-content-center mb-4">
-  <form [formGroup]="formGroup" class="form" style="width: 100%; max-width: 300px">
+<div class="container" novalidate>
+  <form [formGroup]="formGroup" class="form" >
     <h2 class>Contate-nos</h2>
     <!-- Name input -->
     <table class="form-element" cellspacing="0">
@@ -45,8 +45,7 @@
       <tr>
         <td>
           <mat-form-field class="form-element">
-            <input matInput placeholder="Mensagem" formControlName="message" [(ngModel)]="contact.message">
-            <textarea matInput></textarea>
+            <textarea matInput placeholder="Mensagem" formControlName="message" [(ngModel)]="contact.message"></textarea>
             <mat-error *ngIf="!formGroup.controls['message'].valid && formGroup.controls['message'].touched">
               {{ getErrorMessage() }}
             </mat-error>
@@ -58,6 +57,7 @@
       <button class="me-1" mat-raised-button color="primary" type="submit" (click)="saveContact()" class="button" [disabled]="!formGroup.valid">{{isEdit ? 'Atualizar' : 'Cadastrar'}}
       </button>
       <button *ngIf="isEdit" mat-raised-button color="warn" class="button" (click)="deleteContact()">Apagar</button>
+      <button mat-raised-button color="accent" class="button" (click)="voltar()">Voltar</button>
     </div>
   </form>
-</section>
+</div>

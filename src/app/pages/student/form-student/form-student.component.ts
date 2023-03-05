@@ -23,9 +23,12 @@ export class FormStudentComponent implements OnInit {
   isEdit: boolean = false;
   id: number;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,
-    private studentService: StudentService, private cepService: CepService,
-    private _snackBar: MatSnackBar, private activeRouter: ActivatedRoute,
+  constructor(private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private studentService: StudentService, 
+    private cepService: CepService,
+    private _snackBar: MatSnackBar, 
+    private activeRouter: ActivatedRoute,
     private router: Router) {}
 
   ngOnInit(): void {
