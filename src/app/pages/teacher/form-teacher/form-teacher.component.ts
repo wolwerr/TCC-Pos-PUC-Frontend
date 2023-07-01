@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Cep } from 'src/app/models/cep';
 import { ITeacher } from 'src/app/models/teacher';
@@ -64,7 +64,7 @@ export class FormTeacherComponent implements OnInit {
       district: [null, Validators.required],
       state: [null, Validators.required],
       city: [null, Validators.required],
-      country: (this.teacher.country = 'Brasil'),
+      country: ('Brasil'),
       number: [null, [Validators.required, Validators.pattern(numberRegex)]],
     });
   }
@@ -186,7 +186,8 @@ export class FormTeacherComponent implements OnInit {
     } catch (e: any) {
       console.log('error');
       console.log(this.teacher);
-      this.openSnackBar('Error', this.action);
+      this.openSnackBar('Já existe um professor cadastrado com esse email', this.action);
+      return;
     }
     setTimeout(() => {
       this.router.navigate(['/main/teachers'])

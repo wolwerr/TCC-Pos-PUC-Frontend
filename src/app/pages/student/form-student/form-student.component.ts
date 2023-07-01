@@ -25,9 +25,9 @@ export class FormStudentComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
-    private studentService: StudentService, 
+    private studentService: StudentService,
     private cepService: CepService,
-    private _snackBar: MatSnackBar, 
+    private _snackBar: MatSnackBar,
     private activeRouter: ActivatedRoute,
     private router: Router) {}
 
@@ -182,7 +182,8 @@ export class FormStudentComponent implements OnInit {
     } catch (e: any) {
       console.log('error');
       console.log(this.student);
-      this.openSnackBar('Error', this.action);
+      this.openSnackBar('Já existe um aluno cadastrado com esse email', this.action);
+      return;
     }
     setTimeout(() => {
       this.router.navigateByUrl('/main/students')
