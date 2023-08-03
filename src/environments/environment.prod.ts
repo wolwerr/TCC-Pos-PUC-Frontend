@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  backend: 'https://app-pequenos-genios-backend-main-230622121608.azurewebsites.net',
+  backend: 'https://pequenosgenios.up.railway.app',
   cepHost: "https://viacep.com.br"
 };
